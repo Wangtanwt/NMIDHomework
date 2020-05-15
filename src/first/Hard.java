@@ -7,8 +7,7 @@ public class Hard {
         Scanner input = new Scanner(System.in);
         input.useDelimiter("\n");
         String str = input.next();
-        System.out.println(toDate(str));
-        System.out.println(toTimeStamp(toDate(str)));
+        System.out.println(toTimeStamp(str));
     }
 
     public static String toTimeStamp(String date) {
@@ -27,7 +26,7 @@ public class Hard {
         int minute = Integer.parseInt(dateSplit[4]), second = Integer.parseInt(dateSplit[5]);
         int[] months = {31, year%4 != 2?28:29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         int[] days = {0, 365, 730, 1096};
-        if(month > 12 || day > months[month-1] || hour > 23 || minute > 59 || second > 59) return "ERROR";
+        if(month > 12 || day > months[month + 1] || hour > 23 || minute > 59 || second > 59) return "ERROR";
         long dateDig = year / 4 * (365 * 4 + 1) + days[year % 4];
         for (int i = 0; i < month; i++)
             dateDig += months[i];
